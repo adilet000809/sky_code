@@ -1,0 +1,337 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+<script src="{% static 'js/jquery-3.4.1.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto align-items-center">
+                    <li class="nav-item active">
+                        <a href="#main" class="nav-link">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#courses" class="nav-link">Курсы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">О компании</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contacts" class="nav-link">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row video-container" id="main">
+        <div class="overlay"></div>
+        <video playsinline autoplay muted loop>
+            <source src="{% static 'media/iitu.mp4' %}" type="video/mp4">
+        </video>
+        <div class="container h-100">
+            <div class="d-flex h-100 text-center align-items-center">
+                <div class="w-100 text-white">
+                    <h1 class="display-3">Sky Code</h1>
+                    <p class="lead mb-0">Курсы программирования</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row container-fluid">
+        <div class="col-12">
+            <h1 class="h1 text-center">Новости компании</h1>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="{% static 'img/python.jpg' %}" alt="python">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="{% static 'img/kotlin.jpg' %}" alt="kotlin">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="{% static 'img/java.png' %}" alt="java">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row container-fluid" id="about">
+        <div class="col-12">
+            <h1 class="h1 text-center">О компании</h1>
+            <p class="p-1 text-center text-justify">SkyCode - это школа по подготовке будущих разработчиков. Описание анау мынау роыварвыо</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2 class="h2 text-center">Команда</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for teacher in teachers %}
+                <div class="col-12 col-lg-4 col-md-4 col-sm-12 card align-items-center">
+                    <img src="{{ teacher.image.url }}" class="img-fluid img-circle" alt="{{ teacher.first_name }}">
+                    <h5 class="h5 p-1 m-0">{{ teacher.first_name }} {{ teacher.last_name }}</h5>
+                    <p class="p-0 m-1">Должность: {{ teacher.position }}</p>
+                    <p class="p-0 m-1">Стаж: {{ teacher.experience }} лет</p>
+                    <p class="p-0 m-1 text-center">{{ teacher.description }}</p>
+                    <p class="p-0 m-1">E-mail: {{ teacher.email }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <br>
+
+    <div class="container card">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center">Наши партнеры</h1>
+            </div>
+        </div>
+        <div class="row">
+            {% for partner in partners %}
+                <div class="col-lg-3 col-md-4 col-sm-6 text-center">
+                    <img src="{{ partner.image.url }}" class="img-fluid img-partner">
+                    <p class="p-3">{{ partner.name }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row container-fluid">
+        <div class="col-12">
+            <h1 class="h1 text-center">Сотрудничество</h1>
+            <p class="p-1 text-center text-justify">Описание сотрудничество. Условия сотрудничество. Текстовое описание условий сотрудничество.</p>
+        </div>
+    </div>
+
+    <div class="row container-fluid">
+        <div class="col-12">
+            <h1 class="h1 text-center">Курсы</h1>
+            <p class="text-center p-2">Все ближайщие курсы</p>
+        </div>
+    </div>
+
+    <div class="container" id="courses">
+        <div class="row">
+            <div class="card col-md-6 col-lg-4 col-sm-12">
+                <img class="card-img-top" src="{% static 'img/python.jpg' %}" width="200" height="200">
+                <div class="card-body">
+                    <h5 class="card-title">Python</h5>
+                    <p class="card-text">Преподаватель анау мынау</p>
+                    <p class="card-text">Начало</p>
+                    <p class="card-text">Длительность</p>
+                    <p class="card-text">Время</p>
+                    <p class="card-text">Цена 10000тг/мес</p>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
+                </div>
+            </div>
+            <div class="card col-md-6 col-lg-4 col-sm-12">
+                <img class="card-img-top" src="{% static 'img/python.jpg' %}" width="200" height="200">
+                <div class="card-body">
+                    <h5 class="card-title">Python</h5>
+                    <p class="card-text">Преподаватель анау мынау</p>
+                    <p class="card-text">Начало</p>
+                    <p class="card-text">Длительность</p>
+                    <p class="card-text">Время</p>
+                    <p class="card-text">Цена 10000тг/мес</p>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
+                </div>
+            </div>
+            <div class="card col-md-6 col-lg-4 col-sm-12">
+                <img class="card-img-top" src="{% static 'img/python.jpg' %}" width="200" height="200">
+                <div class="card-body">
+                    <h5 class="card-title">Python</h5>
+                    <p class="card-text">Преподаватель анау мынау</p>
+                    <p class="card-text">Начало</p>
+                    <p class="card-text">Длительность</p>
+                    <p class="card-text">Время</p>
+                    <p class="card-text">Цена 10000тг/мес</p>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
+                </div>
+            </div>
+            <div class="card col-md-6 col-lg-4 col-sm-12">
+                <img class="card-img-top" src="{% static 'img/python.jpg' %}" width="200" height="200">
+                <div class="card-body">
+                    <h5 class="card-title">Python</h5>
+                    <p class="card-text">Преподаватель анау мынау</p>
+                    <p class="card-text">Начало</p>
+                    <p class="card-text">Длительность</p>
+                    <p class="card-text">Время</p>
+                    <p class="card-text">Цена 10000тг/мес</p>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
+                </div>
+            </div>
+            <div class="card col-md-6 col-lg-4 col-sm-12">
+                <img class="card-img-top" src="{% static 'img/python.jpg' %}" width="200" height="200">
+                <div class="card-body">
+                    <h5 class="card-title">Python</h5>
+                    <p class="card-text">Преподаватель анау мынау</p>
+                    <p class="card-text">Начало</p>
+                    <p class="card-text">Длительность</p>
+                    <p class="card-text">Время</p>
+                    <p class="card-text">Цена 10000тг/мес</p>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
+                </div>
+            </div>
+            <div class="card col-md-6 col-lg-4 col-sm-12">
+                <img class="card-img-top" src="{% static 'img/python.jpg' %}" width="200" height="200">
+                <div class="card-body">
+                    <h5 class="card-title">Python</h5>
+                    <p class="card-text">Преподаватель анау мынау</p>
+                    <p class="card-text">Начало</p>
+                    <p class="card-text">Длительность</p>
+                    <p class="card-text">Время</p>
+                    <p class="card-text">Цена 10000тг/мес</p>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
+                </div>
+            </div>
+            <div class="card col-md-6 col-lg-4 col-sm-12">
+                <img class="card-img-top" src="{% static 'img/python.jpg' %}" width="200" height="200">
+                <div class="card-body">
+                    <h5 class="card-title">Python</h5>
+                    <p class="card-text">Преподаватель анау мынау</p>
+                    <p class="card-text">Начало</p>
+                    <p class="card-text">Длительность</p>
+                    <p class="card-text">Время</p>
+                    <p class="card-text">Цена 10000тг/мес</p>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
+                </div>
+            </div>
+            <div class="card col-md-6 col-lg-4 col-sm-12">
+                <img class="card-img-top" src="{% static 'img/python.jpg' %}" width="200" height="200">
+                <div class="card-body">
+                    <h5 class="card-title">Python</h5>
+                    <p class="card-text">Преподаватель анау мынау</p>
+                    <p class="card-text">Начало</p>
+                    <p class="card-text">Длительность</p>
+                    <p class="card-text">Время</p>
+                    <p class="card-text">Цена 10000тг/мес</p>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row container-fluid" id="contacts">
+        <div class="col-12">
+            <h1 class="h1 text-center">Контакты</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <form class="p-5" width="100%">
+                <div class="form-group mt-0">
+                    <h4 class="text-center">Остались вопросы?</h4>
+                </div>
+                <div class="form-group">
+                    <label for="contactName" class="col-form-label">Имя:</label>
+                    <input id="contactName" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail" class="col-form-label">Email</label>
+                    <input id="contactEmail" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="contactQuestion" class="col-form-label">Вопрос:</label>
+                    <textarea id="contactQuestion" class="form-control rounded-0" rows="8"></textarea>
+                </div>
+                <input type="submit" class="btn btn-primary">
+            </form>
+        </div>
+        <div class="col-sm-8">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2906.7786904652253!2d76.90769551548424!3d43.23509947913794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3883692f027581ad%3A0x2426740f56437e63!2z0JzQtdC20LTRg9C90LDRgNC-0LTQvdGL0Lkg0YPQvdC40LLQtdGA0YHQuNGC0LXRgiDQuNC90YTQvtGA0LzQsNGG0LjQvtC90L3Ri9GFINGC0LXRhdC90L7Qu9C-0LPQuNC5!5e0!3m2!1sru!2skz!4v1561204077518!5m2!1sru!2skz" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <footer class="container-fluid bg-dark">
+        <div class="container text-white">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4>Наш адрес</h4>
+                    <p>Казахстан, г.Алматы ул.Жандосова 34А(уг. ул.Манаса)</p>
+                </div>
+                <div class="col-sm-6 text-center">
+                    <h4>Наши контакты</h4>
+                    <p>+7(708) 506 09 08</p>
+                    <p>nis.csse@gmail.com</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h6>© Sky Code 2019</h6>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Свяжитесь с нами</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="name" class="col-form-label">Имя:</label>
+                        <input type="text" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="telephone" class="col-form-label">Телефон:</label>
+                        <input type="tel" id="telephone">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-form-label">Email:</label>
+                        <input type="email" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="course" class="col-form-label">Курс:</label>
+                        <input type="email" id="course" value="Python" disabled>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-primary" value="Оставить заявку">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
