@@ -7,6 +7,7 @@ from skycode.models import *
 def index(request):
     context = {'teachers': Teacher.objects.all(),
                'partners': Partner.objects.all(),
+               'courses': Course.objects.all(),
                }
     return render(request, 'index.html', context)
 

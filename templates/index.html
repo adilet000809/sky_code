@@ -140,103 +140,20 @@
 
     <div class="container" id="courses">
         <div class="row">
-            <div class="card col-md-6 col-lg-4 col-sm-12">
-                <img class="card-img-top" src="{% static 'img/python.jpg' %}" width="200" height="200">
-                <div class="card-body">
-                    <h5 class="card-title">Python</h5>
-                    <p class="card-text">Преподаватель анау мынау</p>
-                    <p class="card-text">Начало</p>
-                    <p class="card-text">Длительность</p>
-                    <p class="card-text">Время</p>
-                    <p class="card-text">Цена 10000тг/мес</p>
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
+            {% for course in courses %}
+                <div class="card col-md-6 col-lg-4 col-sm-12">
+                    <img class="card-img-top" src="{{ course.image.url }}" width="200" height="200">
+                    <div class="card-body">
+                        <h5 class="card-title">Python</h5>
+                        <p class="card-text">Преподаватель анау мынау</p>
+                        <p class="card-text">Начало</p>
+                        <p class="card-text">Длительность</p>
+                        <p class="card-text">Время</p>
+                        <p class="card-text">Цена 10000тг/мес</p>
+                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
+                    </div>
                 </div>
-            </div>
-            <div class="card col-md-6 col-lg-4 col-sm-12">
-                <img class="card-img-top" src="{% static 'img/python.jpg' %}" width="200" height="200">
-                <div class="card-body">
-                    <h5 class="card-title">Python</h5>
-                    <p class="card-text">Преподаватель анау мынау</p>
-                    <p class="card-text">Начало</p>
-                    <p class="card-text">Длительность</p>
-                    <p class="card-text">Время</p>
-                    <p class="card-text">Цена 10000тг/мес</p>
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
-                </div>
-            </div>
-            <div class="card col-md-6 col-lg-4 col-sm-12">
-                <img class="card-img-top" src="{% static 'img/python.jpg' %}" width="200" height="200">
-                <div class="card-body">
-                    <h5 class="card-title">Python</h5>
-                    <p class="card-text">Преподаватель анау мынау</p>
-                    <p class="card-text">Начало</p>
-                    <p class="card-text">Длительность</p>
-                    <p class="card-text">Время</p>
-                    <p class="card-text">Цена 10000тг/мес</p>
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
-                </div>
-            </div>
-            <div class="card col-md-6 col-lg-4 col-sm-12">
-                <img class="card-img-top" src="{% static 'img/python.jpg' %}" width="200" height="200">
-                <div class="card-body">
-                    <h5 class="card-title">Python</h5>
-                    <p class="card-text">Преподаватель анау мынау</p>
-                    <p class="card-text">Начало</p>
-                    <p class="card-text">Длительность</p>
-                    <p class="card-text">Время</p>
-                    <p class="card-text">Цена 10000тг/мес</p>
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
-                </div>
-            </div>
-            <div class="card col-md-6 col-lg-4 col-sm-12">
-                <img class="card-img-top" src="{% static 'img/python.jpg' %}" width="200" height="200">
-                <div class="card-body">
-                    <h5 class="card-title">Python</h5>
-                    <p class="card-text">Преподаватель анау мынау</p>
-                    <p class="card-text">Начало</p>
-                    <p class="card-text">Длительность</p>
-                    <p class="card-text">Время</p>
-                    <p class="card-text">Цена 10000тг/мес</p>
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
-                </div>
-            </div>
-            <div class="card col-md-6 col-lg-4 col-sm-12">
-                <img class="card-img-top" src="{% static 'img/python.jpg' %}" width="200" height="200">
-                <div class="card-body">
-                    <h5 class="card-title">Python</h5>
-                    <p class="card-text">Преподаватель анау мынау</p>
-                    <p class="card-text">Начало</p>
-                    <p class="card-text">Длительность</p>
-                    <p class="card-text">Время</p>
-                    <p class="card-text">Цена 10000тг/мес</p>
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
-                </div>
-            </div>
-            <div class="card col-md-6 col-lg-4 col-sm-12">
-                <img class="card-img-top" src="{% static 'img/python.jpg' %}" width="200" height="200">
-                <div class="card-body">
-                    <h5 class="card-title">Python</h5>
-                    <p class="card-text">Преподаватель анау мынау</p>
-                    <p class="card-text">Начало</p>
-                    <p class="card-text">Длительность</p>
-                    <p class="card-text">Время</p>
-                    <p class="card-text">Цена 10000тг/мес</p>
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
-                </div>
-            </div>
-            <div class="card col-md-6 col-lg-4 col-sm-12">
-                <img class="card-img-top" src="{% static 'img/python.jpg' %}" width="200" height="200">
-                <div class="card-body">
-                    <h5 class="card-title">Python</h5>
-                    <p class="card-text">Преподаватель анау мынау</p>
-                    <p class="card-text">Начало</p>
-                    <p class="card-text">Длительность</p>
-                    <p class="card-text">Время</p>
-                    <p class="card-text">Цена 10000тг/мес</p>
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
-                </div>
-            </div>
-
+            {% endfor %}
         </div>
     </div>
 
