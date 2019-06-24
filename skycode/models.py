@@ -24,4 +24,28 @@ class Partner(models.Model):
         return self.name
 
 
+class Course(models.Model):
+    name = models.CharField(max_length=50)
+    teacher = models.CharField(max_length=50)
+    start = models.DateField()
+    time = models.TimeField()
+    duration = models.CharField(max_length=50)
+    price = models.IntegerField()
+    available = models.BooleanField(default=True)
+    image = models.ImageField(upload_to='course/')
+
+    def __str__(self):
+        return self.name
+
+
+class Question(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=50)
+    question = models.TextField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+
+
 
