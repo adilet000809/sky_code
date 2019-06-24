@@ -1,5 +1,5 @@
 from django.db import models
-
+import datetime
 # Create your models here.
 
 
@@ -24,6 +24,11 @@ class Partner(models.Model):
         return self.name
 
 
+class CourseManager(models.Manager):
+    def all(self):
+        return super(CourseManager, self).get_queryset().filter(available=True, start__gt=datetime.date.today())
+
+
 class Course(models.Model):
     name = models.CharField(max_length=50)
     teacher = models.CharField(max_length=50)
@@ -33,6 +38,7 @@ class Course(models.Model):
     price = models.IntegerField()
     available = models.BooleanField(default=True)
     image = models.ImageField(upload_to='course/')
+    objects = CourseManager()
 
     def __str__(self):
         return self.name

@@ -144,12 +144,12 @@
                 <div class="card col-md-6 col-lg-4 col-sm-12">
                     <img class="card-img-top" src="{{ course.image.url }}" width="200" height="200">
                     <div class="card-body">
-                        <h5 class="card-title">Python</h5>
-                        <p class="card-text">Преподаватель анау мынау</p>
-                        <p class="card-text">Начало</p>
-                        <p class="card-text">Длительность</p>
-                        <p class="card-text">Время</p>
-                        <p class="card-text">Цена 10000тг/мес</p>
+                        <h5 class="card-title">{{ course.name }}</h5>
+                        <p class="card-text">{{ course.teacher }}</p>
+                        <p class="card-text">{{ course.start }}</p>
+                        <p class="card-text">{{ course.duration }}</p>
+                        <p class="card-text">{{ course.time }}</p>
+                        <p class="card-text">Цена {{ course.price }}тг/мес</p>
                         <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
                     </div>
                 </div>
@@ -238,7 +238,7 @@
                     </div>
                     <div class="form-group">
                         <label for="course" class="col-form-label">Курс:</label>
-                        <input type="email" id="course" value="Python" disabled>
+                        <input type="email" id="course" value="" disabled>
                     </div>
                 </form>
             </div>
