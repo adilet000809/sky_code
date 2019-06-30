@@ -6,4 +6,5 @@ from skycode import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('courses/', views.get_courses, name='courses'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+<script src="{% static 'js/jquery-3.4.1.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
+        <div class="container-fluid">
+            <a href="{% url 'index' %}" class="navbar-brand"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto align-items-center">
+                    <li class="nav-item active">
+                        <a href="#main" class="nav-link">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url "courses" %}" class="nav-link">Курсы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contacts" class="nav-link">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+
+
+
+    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Свяжитесь с нами</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="name" class="col-form-label">Имя:</label>
+                        <input type="text" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="telephone" class="col-form-label">Телефон:</label>
+                        <input type="tel" id="telephone">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-form-label">Email:</label>
+                        <input type="email" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="course" class="col-form-label">Комментарий:</label>
+                        <textarea id="course"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-primary" value="Оставить заявку">
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

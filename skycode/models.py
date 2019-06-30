@@ -26,7 +26,7 @@ class Partner(models.Model):
 
 class CourseManager(models.Manager):
     def all(self):
-        return super(CourseManager, self).get_queryset().filter(available=True, start__gt=datetime.date.today())
+        return super(CourseManager, self).get_queryset().filter(available=True)
 
 
 class Course(models.Model):
@@ -38,6 +38,7 @@ class Course(models.Model):
     price = models.IntegerField()
     available = models.BooleanField(default=True)
     image = models.ImageField(upload_to='course/')
+    description = models.TextField(max_length=200, null=True, blank=True)
     objects = CourseManager()
 
     def __str__(self):

@@ -1,35 +1,7 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-<link rel="stylesheet" href="{% static 'css/main.css' %}">
-<script src="{% static 'js/jquery-3.4.1.js' %}"></script>
-<script src="{% static 'js/bootstrap.js' %}"></script>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container-fluid">
-            <a href="#" class="navbar-brand"><img src="{% static 'img/logo.png' %}" alt="logo"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto align-items-center">
-                    <li class="nav-item active">
-                        <a href="#main" class="nav-link">Главная</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#courses" class="nav-link">Курсы</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#about" class="nav-link">О компании</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#contacts" class="nav-link">Контакты</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+
+{% block content %}
 
     <div class="row video-container" id="main">
         <div class="overlay"></div>
@@ -79,13 +51,6 @@
 
     <br>
 
-    <div class="row container-fluid" id="about">
-        <div class="col-12">
-            <h1 class="h1 text-center">О компании</h1>
-            <p class="p-1 text-center text-justify">SkyCode - это школа по подготовке будущих разработчиков. Описание анау мынау роыварвыо</p>
-        </div>
-    </div>
-
     <div class="container">
         <div class="row">
             <div class="col">
@@ -117,7 +82,7 @@
         <div class="row">
             {% for partner in partners %}
                 <div class="col-lg-3 col-md-4 col-sm-6 text-center">
-                    <img src="{{ partner.image.url }}" class="img-fluid img-partner">
+                    <img src="{{ partner.image.url }}" class="img-fluid img-partner" alt="{{ partner.name }}">
                     <p class="p-3">{{ partner.name }}</p>
                 </div>
             {% endfor %}
@@ -142,7 +107,7 @@
         <div class="row">
             {% for course in courses %}
                 <div class="card col-md-6 col-lg-4 col-sm-12">
-                    <img class="card-img-top" src="{{ course.image.url }}" width="200" height="200">
+                    <img class="card-img-top" src="{{ course.image.url }}" width="200" height="200" alt="{{ course.name }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ course.name }}</h5>
                         <p class="card-text">{{ course.teacher }}</p>
@@ -150,7 +115,7 @@
                         <p class="card-text">{{ course.duration }}</p>
                         <p class="card-text">{{ course.time }}</p>
                         <p class="card-text">Цена {{ course.price }}тг/мес</p>
-                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
+                        <a class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
                     </div>
                 </div>
             {% endfor %}
@@ -167,7 +132,7 @@
 
     <div class="row">
         <div class="col-sm-12 col-md-4 col-lg-4">
-            <form class="pl-3 pr-sm-3 p-0" width="100%">
+            <form class="pl-3 pr-sm-3 p-0">
                 <div class="form-group p-0">
                     <h4 class="text-center">Остались вопросы?</h4>
                 </div>
@@ -213,42 +178,4 @@
     </footer>
 
 
-    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Свяжитесь с нами</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="name" class="col-form-label">Имя:</label>
-                        <input type="text" id="name">
-                    </div>
-                    <div class="form-group">
-                        <label for="telephone" class="col-form-label">Телефон:</label>
-                        <input type="tel" id="telephone">
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="col-form-label">Email:</label>
-                        <input type="email" id="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="course" class="col-form-label">Курс:</label>
-                        <input type="email" id="course" value="" disabled>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <input type="submit" class="btn btn-primary" value="Оставить заявку">
-            </div>
-        </div>
-    </div>
-
-</div>
-
-</body>
-</html>
+{% endblock %}

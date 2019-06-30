@@ -9,5 +9,9 @@ def index(request):
                'partners': Partner.objects.all(),
                'courses': Course.objects.all(),
                }
-    return render(request, 'index.html', context)
+    return render(request, 'main.html', context)
 
+
+def get_courses(request):
+    context = {'courses': Course.objects.all()}
+    return render(request, 'course.html', context)
