@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 from skycode.models import *
 
@@ -15,3 +16,13 @@ def index(request):
 def get_courses(request):
     context = {'courses': Course.objects.all()}
     return render(request, 'course.html', context)
+
+
+def ask_question(request):
+    if request.is_ajax():
+        name = request.GET['name']
+        email = request.GET['email']
+        question = request.GET['question']
+        Question.objects.create(name=name, email=email, question=question).save()
+        return JsonResponse({'mesasge': 'successful'}, safe=False)
+
