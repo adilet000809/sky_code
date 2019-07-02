@@ -24,5 +24,15 @@ def ask_question(request):
         email = request.GET['email']
         question = request.GET['question']
         Question.objects.create(name=name, email=email, question=question).save()
-        return JsonResponse({'mesasge': 'successful'}, safe=False)
+        return JsonResponse({'message': 'successful'}, safe=False)
+
+
+def enroll_course(request):
+    if request.is_ajax():
+        name = request.GET['name']
+        telephone = request.GET['telephone']
+        email = request.GET['email']
+        comment = request.GET['comment']
+        Request.objects.create(name=name, phone=telephone, email=email, comments=comment).save()
+        return JsonResponse({'message': 'successful'}, safe=False)
 

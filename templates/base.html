@@ -3,10 +3,12 @@
 <html lang="en">
 <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
 <link rel="stylesheet" href="{% static 'css/main.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,600&display=swap" rel="stylesheet">
 <script src="{% static 'js/jquery-3.4.1.js' %}"></script>
 <script src="{% static 'js/bootstrap.js' %}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="{% static 'js/question.js' %}"></script>
+<script src="{% static 'js/request.js' %}"></script>
+<script src="https://kit.fontawesome.com/73cbaad0ce.js"></script>
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light navbar-expand-md bg-light sticky-top">
@@ -31,16 +33,41 @@
         </div>
     </nav>
 
+    <div class="sticky-top float-right col-sm-12 col-md-6 col-lg-4 w-auto">
+            <div class="alert alert-success collapse" id="success-alert">
+                Спасибо за вопрос! Наш менеджер скором времени свяжется с вами. <span>  &hearts;</span>
+            </div>
+    </div>
+
+    <div class="sticky-top float-right col-sm-12 col-md-6 col-lg-4 w-auto">
+            <div class="alert alert-success collapse" id="course-alert">
+                Вы успешно записались! Наш менеджер скором времени свяжется с вами. <span>  &hearts;</span>
+            </div>
+    </div>
+
     {% block content %}
     {% endblock %}
 
-
-    <div class="alert alert-success" role="alert">
-    <h4 class="alert-heading">Well done!</h4>
-  <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-  <hr>
-  <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-</div>
+    <footer class="container-fluid bg-dark">
+        <div class="container text-white">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4>Наш адрес</h4>
+                    <p>Казахстан, г.Алматы ул.Жандосова 34А(уг. ул.Манаса)</p>
+                </div>
+                <div class="col-sm-6 text-center">
+                    <h4>Наши контакты</h4>
+                    <p>+7(708) 506 09 08</p>
+                    <p>nis.csse@gmail.com</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h6>© Sky Code 2019</h6>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
     <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -49,31 +76,29 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Свяжитесь с нами</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times</span>
                     </button>
                 </div>
             <div class="modal-body">
-                <form>
+                <form class="request-form" method="POST">{% csrf_token %}
                     <div class="form-group">
                         <label for="name" class="col-form-label">Имя:</label>
-                        <input type="text" id="name">
+                        <input type="text" id="name" required>
                     </div>
                     <div class="form-group">
                         <label for="telephone" class="col-form-label">Телефон:</label>
-                        <input type="tel" id="telephone">
+                        <input type="tel" id="telephone" required>
                     </div>
                     <div class="form-group">
                         <label for="email" class="col-form-label">Email:</label>
-                        <input type="email" id="email">
+                        <input type="email" id="email" required>
                     </div>
                     <div class="form-group">
-                        <label for="course" class="col-form-label">Комментарий:</label>
-                        <textarea id="course"></textarea>
+                        <label for="comment" class="col-form-label">Комментарий:</label>
+                        <textarea id="comment" class="form-control rounded-0" rows="8" required></textarea>
                     </div>
+                    <input type="submit" class="btn btn-primary" value="Оставить заявку">
                 </form>
-            </div>
-            <div class="modal-footer">
-                <input type="submit" class="btn btn-primary" value="Оставить заявку">
             </div>
         </div>
     </div>

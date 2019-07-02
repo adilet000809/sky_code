@@ -16,27 +16,31 @@
                                 <h2 class="h2 mb-3 mt-1">{{ course.name }}</h2>
                                 <p class="pr-lg-5 text-muted">{{ course.description }}</p>
                                 <div class="row my-4">
-                                    <div class="col col-lg-5 text-nowrap">
+                                    <div class="col col-sm-6 text-nowrap">
                                         <div class="d-flex mb-2">
-                                            <span class="font-weight-bold mr-2">{{ course.teacher }}</span>
+                                            <span class="font-weight-bold mr-2"><i class="fas fa-chalkboard-teacher"></i>  {{ course.teacher }}</span>
                                         </div>
                                         <div class="d-flex mt-3">
-                                            <span class="font-weight-bold mr-2">{{ course.price }} тг/мес</span>
+                                            <span class="font-weight-bold mr-2"><i class="fas fa-tenge"></i>  {{ course.price }} тг/мес</span>
                                         </div>
                                     </div>
-                                    <div class="col col-lg-5 text-nowrap">
+                                    <div class="col col-sm-6 text-nowrap">
                                         <div class="d-flex mb-2">
-                                            <span class="font-weight-bold mr-2">{{ course.start }}</span>
+                                            <span class="font-weight-bold mr-2"><i class="fas fa-calendar-alt"></i>  {{ course.start }}</span>
                                         </div>
                                         <div class="d-flex mt-3">
-                                            <span class="font-weight-bold mr-2">{{ course.duration }}</span>
+                                            <span class="font-weight-bold mr-2"><i class="fas fa-hourglass"></i>  {{ course.duration }}</span>
                                         </div>
                                     </div>
-                                    <a class="btn btn-primary mt-3" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <a class="btn btn-primary mt-3" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-sm-3 col-lg-4 d-none d-sm-flex align-items-start align-items-lg-center justify-content-end">
-                                <img src="{{ course.image.url }}" alt="{{ course.name }}" class="img-fluid" width="300" height="300">
+                            <div class="col-sm-3 col-lg-4 d-none d-sm-flex align-items-start align-items-lg-center">
+                                <img src="{{ course.image.url }}" alt="{{ course.name }}" class="img-fluid" width="100%" height="400">
                             </div>
                         </div>
                     </div>

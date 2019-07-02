@@ -12,11 +12,13 @@ $(document).ready(function () {
                 question: question,
             },
             dataType: 'json',
-            success: function (response) {
-                console.log('shit1');
-                $('.alert').alert();
-
-                console.log('shit1');
+            success: function () {
+                $('#contactName').val('');
+                $('#contactEmail').val('');
+                $('#contactQuestion').val('');
+                $("#success-alert").fadeTo(4000, 800).slideUp(700, function() {
+                    $("#success-alert").slideUp(600);
+                });
             }
         });
     });

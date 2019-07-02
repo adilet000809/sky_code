@@ -1,6 +1,4 @@
 from django.db import models
-import datetime
-# Create your models here.
 
 
 class Teacher(models.Model):
@@ -49,9 +47,22 @@ class Question(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
     question = models.TextField(max_length=200)
+    answered = models.BooleanField(null=True, default=False)
 
     def __str__(self):
         return self.name
+
+
+class Request(models.Model):
+    name = models.CharField(max_length=50)
+    phone = models.CharField(max_length=50)
+    email = models.EmailField(max_length=50)
+    comments = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name + ' ' + self.phone
+
+
 
 
 
