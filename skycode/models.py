@@ -47,7 +47,7 @@ class Question(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
     question = models.TextField(max_length=200)
-    answered = models.BooleanField(null=True, default=False)
+    answered = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -58,9 +58,19 @@ class Request(models.Model):
     phone = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
     comments = models.CharField(max_length=200)
+    accepted = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name + ' ' + self.phone
+
+
+class News(models.Model):
+    image = models.ImageField(upload_to='news/')
+    title = models.CharField(max_length=50)
+    description = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.title
 
 
 

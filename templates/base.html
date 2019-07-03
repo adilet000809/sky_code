@@ -20,14 +20,20 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto align-items-center">
                     <li class="nav-item active">
-                        <a href="#main" class="nav-link">Главная</a>
+                        {% if request.get_full_path == '/' %}
+                            <a href="#main" class="nav-link">Главная</a>
+                        {% else %}
+                            <a href="{% url "index" %}" class="nav-link">Главная</a>
+                        {% endif %}
                     </li>
                     <li class="nav-item">
                         <a href="{% url "courses" %}" class="nav-link">Курсы</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#contacts" class="nav-link">Контакты</a>
-                    </li>
+                    {% if request.get_full_path == '/' %}
+                        <li class="nav-item">
+                            <a href="#contacts" class="nav-link">Контакты</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>

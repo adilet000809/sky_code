@@ -2,13 +2,12 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from skycode.models import *
 
-# Create your views here.
-
 
 def index(request):
     context = {'teachers': Teacher.objects.all(),
                'partners': Partner.objects.all(),
                'courses': Course.objects.all(),
+               'news': News.objects.all(),
                }
     return render(request, 'main.html', context)
 

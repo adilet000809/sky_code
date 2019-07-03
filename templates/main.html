@@ -31,20 +31,28 @@
     <div class="row">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                {% for indicator in news %}
+                    {% if forloop.first %}
+                        <li data-target="#carouselExampleIndicators" data-slide-to="{{ indicator }}" class="active"></li>
+                    {% else %}
+                        <li data-target="#carouselExampleIndicators" data-slide-to="{{ indicator }}"></li>
+                    {% endif %}
+                {% endfor %}
             </ol>
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100" src="{% static 'img/python.jpg' %}" alt="python">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="{% static 'img/kotlin.jpg' %}" alt="kotlin">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="{% static 'img/java.png' %}" alt="java">
-                </div>
+                {% for new in news %}
+                    {% if forloop.first %}
+                        <div class="carousel-item active">
+                    {% else %}
+                        <div class="carousel-item">
+                    {% endif %}
+                            <img class="d-block w-100" src="{{ new.image.url }}" alt="python">
+                            <div class="carousel-caption d-md-block">
+                                <h3 class="h3">{{ new.title }}</h3>
+                                <p>{{ new.description }}</p>
+                            </div>
+                        </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -115,7 +123,7 @@
                         <p class="card-text"><i class="fas fa-hourglass"></i>  {{ course.duration }}</p>
                         <p class="card-text"><i class="fas fa-clock"></i>  {{ course.time }}</p>
                         <p class="card-text"><i class="fas fa-tenge"></i>  {{ course.price }} тг/мес</p>
-                        <a class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</a>
+                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#contactModal">Записаться на курс</button>
                     </div>
                 </div>
             {% endfor %}
@@ -148,7 +156,7 @@
                     <label for="contactQuestion" class="col-form-label">Вопрос:</label>
                     <textarea id="contactQuestion" class="form-control rounded-0" rows="8" name="question" required></textarea>
                 </div>
-                <input type="submit" class="btn btn-primary" value="Задать вопрос">
+                <input type="submit" class="btn btn-outline-primary" value="Задать вопрос">
             </form>
         </div>
         <div class="col-sm-12 col-md-8 col-lg-8">
