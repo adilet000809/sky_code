@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import post_delete, post_save
+from django.dispatch import receiver
 
 
 class Teacher(models.Model):
@@ -73,7 +75,35 @@ class News(models.Model):
         return self.title
 
 
+@receiver(post_delete, sender=Teacher)
+def teacher_delete(sender, instance, **kwargs):
+    instance.image.delete(False)
 
 
+@receiver(post_delete, sender=Partner)
+def partner_delete(sender, instance, **kwargs):
+    instance.image.delete(False)
+
+
+@receiver(post_delete, sender=Course)
+def course_delete(sender, instance, **kwargs):
+    instance.image.delete(False)
+
+
+@receiver(post_delete, sender=News)
+def news_delete(sender, instance, **kwargs):
+    instance.image.delete(False)
+
+
+@receiver(post_save, sender=Question)
+def question_delete(sender, instance, **kwargs):
+    if instance.answered:
+        instance.delete()
+
+
+@receiver(post_save, sender=Request)
+def request_delete(sender, instance, **kwargs):
+    if instance.accepted:
+        instance.delete()
 
 
