@@ -53,6 +53,11 @@ html body{
   z-index: 1;
 }
 
+.alert-z{
+    z-index: 2;
+    position: absolute; !important;
+}
+
 #carouselExampleIndicators{
     margin: 0 auto;
     width: 90%;
