@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <section class="hero-banner text-center">
+        <div class="container">
+          <h1>Sky Code</h1>
+          <h3 class="prog">КУРСЫ ПРОГРАММИРОВАНИЯ</h3>
+        </div>
+    </section>
+
+    <div class="about-section">
+    <h1 class = "prepody text-center">Наши преподаватели</h1>
+    <div class="overlay"></div>
+    <div class="card-section">
+      <div class="container">
+        <div class="row">
+            {% for teacher in teachers %}
+              <div class="col-md-4 col-sm-6">
+                <div class="lab-card">
+                  <div class="icon">
+                    <i class="flaticon-023-flask"></i>
+                  </div>
+                  <h2>{{ teacher.first_name }} {{ teacher.last_name }}</h2>
+                  <p>Должность: {{ teacher.position }}</p>
+                  <p>Стаж: {{ teacher.experience }} лет</p>
+                  <p>{{ teacher.description }}</p>
+                  <p>E-mail: {{ teacher.email }}</p>
+                </div>
+              </div>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <section class="section-padding priceTable-bg">
+    <div class="container">
+      <div class="section-intro-white pb-85px text-center">
+        <h2 class="">Курсы</h2>
+        <div class="section-style"></div>
+      </div>
+
+      <div class="priceTable">
+        <div class="priceTable">
+          <div class="row">
+              {% for course in courses %}
+                  <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
+                      <div class="card text-center card-pricing">
+                        <div class="card-pricing__header">
+                          <h4>{{ course.name }}</h4>
+                        </div>
+                        <ul class="card-pricing__list">
+                          <li><i class="fas fa-chalkboard-teacher"></i>  {{ course.teacher }}</li>
+                          <li><i class="fas fa-calendar-alt"></i>  {{ course.start }}</li>
+                          <li><i class="fas fa-hourglass"></i>  {{ course.duration }}</li>
+                          <li><i class="fas fa-clock"></i>  {{ course.time }}</li>
+                          <li><i class="fas fa-tenge"></i>  {{ course.price }} тг/мес</li>
+                        </ul>
+                        <div class="card-pricing__footer">
+                          <button type="button" data-toggle="modal" data-target="#contactModal" class="button">Записаться на курс</button>
+                        </div>
+                      </div>
+                  </div>
+              {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <div class="services-section spad">
+    <div class="container">
+        <h1 class = "our_partners text-center">Наши партнеры</h1>
+      <div class="row">
+        {% for partner in partners %}
+            <div class="col-md-4 col-sm-6">
+              <div class="service">
+                <div class="service-text text-center">
+                  <img src="{{ partner.image.url }}" class="partners">
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-section spad fix">
+    <div class="container-fluid">
+      <div><h2 class="voprosy">Остались вопросы?</h2></div>
+      <div class="row">
+        <!-- contact form -->
+        <div class="col-md-6 col-pull">
+          <form class="form-class" id="con_form" method="POST">{% csrf_token %}
+            <div class="row">
+              <div class="col-sm-6">
+                <input type="text" name="name" id="contactName" placeholder="Имя" value="">
+              </div>
+              <div class="col-sm-6">
+                <input type="text" name="email" id="contactEmail" placeholder="Email" value="">
+              </div>
+              <div class="col-sm-12">
+                <textarea name="message" id="contactQuestion" placeholder="Вопрос"></textarea>
+              </div>
+                <input type="submit" id="btn-question" class="site-btn" value="Задать вопрос">
+            </div>
+
+           </form>
+        </div>
+        <div class="col-md-6 col-md-offset-1 contact-info col-push">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2906.7786904652253!2d76.90769551548424!3d43.23509947913794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3883692f027581ad%3A0x2426740f56437e63!2z0JzQtdC20LTRg9C90LDRgNC-0LTQvdGL0Lkg0YPQvdC40LLQtdGA0YHQuNGC0LXRgiDQuNC90YTQvtGA0LzQsNGG0LjQvtC90L3Ri9GFINGC0LXRhdC90L7Qu9C-0LPQuNC5!5e0!3m2!1sru!2skz!4v1561204077518!5m2!1sru!2skz" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
