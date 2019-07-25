@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('.question-form').on('submit', function (e) {
+    $('.form-class').on('submit', function (e) {
         var name = $('#contactName').val();
         var email = $('#contactEmail').val();
         var question = $('#contactQuestion').val();
