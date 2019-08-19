@@ -4,8 +4,8 @@ from django.dispatch import receiver
 
 
 class Teacher(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
+    firstName = models.CharField(max_length=50)
+    lastName = models.CharField(max_length=50)
     position = models.CharField(max_length=50)
     description = models.TextField(max_length=150)
     email = models.EmailField()
@@ -13,7 +13,7 @@ class Teacher(models.Model):
     image = models.ImageField(upload_to='teacher/')
 
     def __str__(self):
-        return self.first_name + ' ' + self.last_name
+        return self.firstName + ' ' + self.lastName
 
 
 class Partner(models.Model):

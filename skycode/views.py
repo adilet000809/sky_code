@@ -1,6 +1,19 @@
 from django.http import JsonResponse
 from django.shortcuts import render
 from skycode.models import *
+from rest_framework import viewsets
+
+from skycode.serializers import TeacherSerializer, CourseSerializer
+
+
+class TeacherView(viewsets.ModelViewSet):
+    queryset = Teacher.objects.all()
+    serializer_class = TeacherSerializer
+
+
+class CourseView(viewsets.ModelViewSet):
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
 
 
 def index(request):
